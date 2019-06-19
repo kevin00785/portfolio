@@ -1,0 +1,106 @@
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin topCenter {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+@mixin transitionFast {
+  transition: all .3s;
+}
+
+@mixin transitionVeryFast {
+  transition: all .09s;
+}
+
+@mixin transitionShort {
+  transition: all 1s ease-in;
+}
+
+
+// Les clipPath diagonles
+// ***regler lespace irregulier entre les div, je pense que c a cause du margin
+@mixin clipPathHighLeftLowRight {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%, 0 80%);
+
+  @include respond(medium) {
+     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%, 0 90%);
+  }
+
+  @include respond(small) {
+     clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%, 0 95%);
+  }
+}
+
+
+
+@mixin clipPathLowLeftHighRight {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+
+  @include respond(medium) {
+     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  }
+
+  @include respond(small) {
+     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+  }
+}
+
+
+
+@mixin clipPathTopHighLeftLowRight {
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
+
+  @include respond(medium) {
+     clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+  }
+
+  @include respond(small) {
+     clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+  }
+
+
+}
+
+
+
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == small {
+      @media only screen and (max-width: 47.9375rem){ @content };    //600px
+  }
+  @if $breakpoint == medium {
+      @media only screen and (min-width: 48rem) and (max-width: 61.9375rem) { @content };     //900px
+  }
+  @if $breakpoint == large {
+      @media only screen and (min-width: 62rem) { @content };     //900px
+  }
+  @if $breakpoint == xlarge {
+      @media only screen and (min-width: 75rem) { @content };     //900px
+  }
+}

@@ -1,0 +1,39 @@
+.section-footer {
+	padding:rem(250) 0 rem(100);
+	background-color: $color-secondary;
+	margin-top: rem(-250);
+	@include clipPathTopHighLeftLowRight;
+
+	.paragraph {
+		max-width:rem(450);
+	}
+
+	.info {
+		display :block;
+		&__content {
+			display: block;
+			margin-bottom: rem(15);
+		}
+		&__img {
+			width: rem(34);
+			display:inline-block;
+			vertical-align: middle;
+			color: $color-grey-really-dark;
+			margin-right: rem(20);
+		}
+		&__text {
+		max-width: rem(300);
+			display: inline-block;
+			vertical-align: middle;
+			color: $color-grey-really-dark;
+		}
+		a {
+			color: $color-grey-really-dark;
+			&:hover,
+			&:visited {
+				color: $color-primary;
+				@include transitionFast;
+			}
+		}
+	}
+}

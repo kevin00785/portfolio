@@ -1,0 +1,201 @@
+.form {
+	max-width: rem(450);
+
+	.form-group {
+		position: relative;
+		display: inline-block;
+
+		.form__input:focus ~ .form__floating-label,
+		.form__input:not(:focus):valid ~ .form__floating-label {
+			top: rem(-20);
+			font-size: rem(13);
+			opacity: 1;
+		}
+	}
+
+	&__label {
+		color: $color-grey-really-dark;
+		font-family: $typo-headlines;
+		font-size: rem(20);
+		margin-bottom: rem(5);
+		display: inline-block;
+		text-indent: rem(5);
+	}
+
+	&__floating-label {
+		position: absolute;
+		pointer-events: none;
+		color: $color-grey-really-dark;
+		font-family: $typo-headlines;
+		font-size: rem(20);
+		top: 0;
+		left: rem(20);
+		transition: 0.2s ease all;
+	}
+
+	&__input {
+		position: relative;
+		color: $color-grey-really-dark;
+		font-family: $typo-headlines;
+		font-size: rem(20);
+		width: 100%;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		border-bottom: rem(1) solid $color-grey-really-dark;
+		margin-bottom: rem(48);
+		padding: rem(5) 0;
+		text-indent: rem(5);
+		box-shadow: none !important;
+
+		&:placeholder {
+			margin-bottom: rem(20);
+		}
+		&:focus {
+			color: $color-grey-light;
+			outline: none;
+			border-bottom: rem(1) solid $color-primary;
+			@include transitionFast;
+		}
+		&:defined {
+			color: $color-grey-light !important;
+		}
+	}
+
+	&__textarea {
+		@extend .form__input;
+		width: 100%;
+		border: rem(1) solid $color-grey-really-dark;
+		padding: rem(20) rem(10);
+		margin-bottom: 0;
+
+		&:focus {
+			color: $color-grey-light;
+			outline: none;
+			border: rem(1) solid $color-primary;
+		}
+	}
+
+	&__radio {
+		list-style: none;
+	  margin: 0;
+	  padding: 0;
+
+	  li {
+	  	position: relative;
+			color: #AAAAAA;
+		  display: block;
+		  position: relative;
+		  float: left;
+		  margin:rem(15) 0;
+		  // width: 100%;
+		  // height: 100px;
+			border-bottom: rem(1) solid #333;
+
+			input[type=radio]{
+				position: absolute;
+				cursor: pointer;
+				z-index: 20;
+				top: rem(10);
+				left: rem(5);
+				opacity: 0;
+			  // visibility: hidden;
+
+			}
+
+			label {
+				display: inline-block;
+				padding: 0 rem(30) 0 rem(40);
+			  margin: auto;
+			  // height: rem(30);
+			  cursor: pointer;
+			  @include transitionFast;
+			}
+
+			&:hover {
+				color: $color-white;
+			}
+
+			.check {
+				display: block;
+			  position: absolute;
+			  border: rem(5) solid #AAAAAA;
+			  border-radius: 100%;
+			  height: rem(25);
+			  width: rem(25);
+			  top: 50%;
+			  transform: translateY(-50%);
+			  left: 0;
+				z-index: 5;
+				transition: border .25s linear;
+
+				&:before {
+					display: block;
+					content: '';
+				  border-radius: 100%;
+				  height: rem(9);
+				  width: rem(9);
+				  margin: auto;
+					transition: background 0.25s linear;
+					// transform-origin: center center;
+					@include absCenter;
+				}
+			}
+
+			&:hover .check {
+				border: rem(5) solid $color-white;
+			}
+	  }
+	}
+
+
+	input[type=radio]:checked ~ .check {
+  	border: rem(5) solid $color-primary;
+	}
+
+	input[type=radio]:checked ~ .check::before{
+  	background: $color-primary;
+	}
+
+	input[type=radio]:checked ~ label{
+  	color: $color-primary;
+	}
+
+	&__submit {
+		.loading {
+			display: none;
+			margin: auto;
+		}
+	}
+
+	#form-response-section {
+		p {
+			display: inline-block;
+			font-weight: $fw-semi-bold;
+			color: $color-white;
+			border: 1px solid $color-primary;
+			padding: rem(10);
+		}
+	}
+
+
+
+	// *********Fixer le proble de lautofill
+	input:-webkit-autofill,
+	input:-webkit-autofill:hover,
+	input:-webkit-autofill:focus,
+	input:-webkit-autofill:active {
+	    transition: background-color 5000s ease-in-out 0s;
+	}
+}
+
+// just-validate
+.js-validate-error-field {
+	border: none !important;
+	border-bottom: rem(1) solid red !important;
+}
+.js-validate-error-label {
+	position: absolute;
+	bottom: rem(28);
+	font-size: rem(13);
+}
