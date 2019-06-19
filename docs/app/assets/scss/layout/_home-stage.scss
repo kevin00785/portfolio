@@ -1,0 +1,10 @@
+.home-stage {
+	display: flex;
+  align-items: center;
+	position:relative;
+	z-index: 10;
+	background-color: $color-secondary;
+	// height: 80vh;
+	height: 600px;
+	@include clipPathHighLeftLowRight;
+}

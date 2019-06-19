@@ -1,0 +1,94 @@
+.section-boxes {
+	text-align: center;
+	margin-top: rem(150);
+	.box {
+		// overflow: hidden;
+		position: relative;
+		&__img {
+			position: absolute;
+			overflow: hidden;
+			z-index: 2;
+			left: 50%;
+			top: -50%;
+			transform: translate(-50%, 50%);
+			height: rem(100);
+			width: rem(100);
+			display:inline-block;
+			background: $color-grey-darker;
+			border-radius: 50%;
+			@include transitionFast;
+			&:before {
+				content: "";
+			  position: absolute;
+				border-radius: 50%;
+			  background: $color-primary;
+			  bottom: 0;
+			  left: 0;
+			  right: 0;
+			  top: 100%;
+			  z-index: -1;
+  			@include transitionFast;
+			}
+			img {
+				@include absCenter;
+				width: rem(48);
+			}
+		}
+		.circle {
+			display: inline-block;
+			margin: auto;
+			position: relative;
+			border-radius: 50%;
+			width: rem(250);
+			height: rem(250);
+			background: $color-white-light;
+			border: 3px solid transparent;
+			@include transitionFast;
+
+			&__content {
+				width: 100%;
+		    padding: rem(30);
+				@include absCenter;
+			}
+		}
+
+		&__title {
+			font-size: rem(20);
+			font-weight: $fw-bold;
+			margin: rem(15) 0;
+
+		}
+		&__text {
+			font-size: rem(14);
+		}
+	}
+}
+
+
+// Hover effect
+.section-boxes {
+	.box {
+		&:hover {
+			.circle {
+				transform: scale(1.06);
+			  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+				border: 3px solid $color-primary;
+				.box__img {
+					top: -55%;
+					img {
+						  filter: brightness(5);
+					}
+					&:before {
+						top: 0;
+					}
+				}
+				.box__title {
+					color: $color-primary;
+				}
+			}
+		}
+	}
+}
+
+// spin effect
+
