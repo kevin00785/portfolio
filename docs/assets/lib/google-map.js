@@ -1,7 +1,6 @@
-
 function google_maps_init() {
   'use strict'
-  var myLatLng = {lat: -36.848461, lng: 174.763336};
+  var myLatLng = {lat: -41.2872787, lng: 174.7654104};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
     center: myLatLng,
@@ -26,7 +25,6 @@ function google_maps_lazyload(api_key) {
     var map = document.getElementById('map')
     var observer = new IntersectionObserver(
       function(entries, self) {
-        // Intersecting with Edge workaround https://calendar.perfplanet.com/2017/progressive-image-loading-using-intersection-observer-and-sqip/#comment-102838
         var isIntersecting = typeof entries[0].isIntersecting === 'boolean' ? entries[0].isIntersecting : entries[0].intersectionRatio > 0
         if (isIntersecting) {
           var mapsJS = document.createElement('script')
